@@ -15,6 +15,6 @@ steps:
     containerRegistry: 'retailsolution01'
     repository: 'urbanretail/confluentconnect'
     command: 'buildAndPush'
-    Dockerfile: '$(Build.SourcesDirectory)/Dockerfile'
+    Dockerfile: '$(Build.SourcesDirectory)/kafka-connect/Dockerfile'
     tags: '1.0'
 
