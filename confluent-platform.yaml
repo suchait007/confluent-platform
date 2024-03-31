@@ -3,7 +3,7 @@ apiVersion: platform.confluent.io/v1beta1
 kind: Zookeeper
 metadata:
   name: zookeeper
-  namespace: confluent
+  namespace: retail-dev
 spec:
   replicas: 3
   image:
@@ -16,7 +16,7 @@ apiVersion: platform.confluent.io/v1beta1
 kind: Kafka
 metadata:
   name: kafka
-  namespace: confluent
+  namespace: retail-dev
 spec:
   replicas: 3
   image:
@@ -33,7 +33,7 @@ apiVersion: platform.confluent.io/v1beta1
 kind: Connect
 metadata:
   name: connect
-  namespace: confluent
+  namespace: retail-dev
 spec:
   replicas: 1
   image:
@@ -47,7 +47,7 @@ apiVersion: platform.confluent.io/v1beta1
 kind: KsqlDB
 metadata:
   name: ksqldb
-  namespace: confluent
+  namespace: retail-dev
 spec:
   replicas: 1
   image:
@@ -59,7 +59,7 @@ apiVersion: platform.confluent.io/v1beta1
 kind: ControlCenter
 metadata:
   name: controlcenter
-  namespace: confluent
+  namespace: retail-dev
 spec:
   replicas: 1
   image:
@@ -80,7 +80,7 @@ apiVersion: platform.confluent.io/v1beta1
 kind: SchemaRegistry
 metadata:
   name: schemaregistry
-  namespace: confluent
+  namespace: retail-dev
 spec:
   replicas: 3
   image:
@@ -91,7 +91,7 @@ apiVersion: platform.confluent.io/v1beta1
 kind: KafkaRestProxy
 metadata:
   name: kafkarestproxy
-  namespace: confluent
+  namespace: retail-dev
 spec:
   replicas: 1
   image:
