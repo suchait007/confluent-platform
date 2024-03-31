@@ -37,7 +37,7 @@ metadata:
 spec:
   replicas: 1
   image:
-    application: urbanretail/confluentconnect:1.0
+    application: retailsolution01.azurecr.io/urbanretail/confluentconnect:1.0
     init: confluentinc/confluent-init-container:2.8.0
   dependencies:
     kafka:
