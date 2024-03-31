@@ -1,0 +1,26 @@
+# Starter pipeline
+# Start with a minimal pipeline that you can customize to build and deploy your code.
+# Add steps that build, run tests, deploy, and more:
+# https://aka.ms/yaml
+
+trigger:
+- main
+
+pool:
+  name: suchait-consulting-pool
+
+steps:
+- task: Kubernetes@1
+  inputs:
+    connectionType: 'Azure Resource Manager'
+    azureSubscriptionEndpoint: 'Pay-As-You-Go(f65151dc-48ba-4cfe-9ec2-68a5feaaf530)'
+    azureResourceGroup: 'invoicerequestprocessor'
+    kubernetesCluster: 'urbantech-retails'
+    useClusterAdmin: true
+    namespace: 'retail-dev'
+    command: 'apply'
+    useConfigurationFile: true
+    configuration: '$(Build.SourcesDirectory)/confluent-platform.yaml'
+    secretType: 'dockerRegistry'
+    containerRegistryType: 'Azure Container Registry'
+
