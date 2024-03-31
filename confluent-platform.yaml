@@ -27,7 +27,7 @@ spec:
     enabled: true
   dependencies:
     zookeeper:
-      endpoint: zookeeper.confluent.svc.cluster.local:2181
+      endpoint: zookeeper.retail-dev.svc.cluster.local:2181
 ---
 apiVersion: platform.confluent.io/v1beta1
 kind: Connect
@@ -68,13 +68,13 @@ spec:
   dataVolumeCapacity: 10Gi
   dependencies:
     schemaRegistry:
-      url: http://schemaregistry.confluent.svc.cluster.local:8081
+      url: http://schemaregistry.retail-dev.svc.cluster.local:8081
     ksqldb:
     - name: ksqldb
-      url: http://ksqldb.confluent.svc.cluster.local:8088
+      url: http://ksqldb.retail-dev.svc.cluster.local:8088
     connect:
     - name: connect
-      url: http://connect.confluent.svc.cluster.local:8083
+      url: http://connect.retail-dev.svc.cluster.local:8083
 ---
 apiVersion: platform.confluent.io/v1beta1
 kind: SchemaRegistry
@@ -99,4 +99,4 @@ spec:
     init: confluentinc/confluent-init-container:2.8.0
   dependencies:
     schemaRegistry:
-      url: http://schemaregistry.confluent.svc.cluster.local:8081
+      url: http://schemaregistry.retail-dev.svc.cluster.local:8081
