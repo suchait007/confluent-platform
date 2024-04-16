@@ -26,7 +26,7 @@ steps:
     azureResourceGroup: 'invoicerequestprocessor'
     kubernetesCluster: 'urbantech-retails'
     useClusterAdmin: true
-    namespace: 'retail-dev'
+    namespace: 'kafka-demo'
     command: 'apply'
     useConfigurationFile: true
     configuration: '$(Build.SourcesDirectory)/confluent-platform.yaml'

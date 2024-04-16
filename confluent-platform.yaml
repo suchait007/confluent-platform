@@ -3,7 +3,7 @@ apiVersion: platform.confluent.io/v1beta1
 kind: Zookeeper
 metadata:
   name: zookeeper
-  namespace: retail-dev
+  namespace: kafka-demo
 spec:
   replicas: 3
   image:
@@ -16,7 +16,7 @@ apiVersion: platform.confluent.io/v1beta1
 kind: Kafka
 metadata:
   name: kafka
-  namespace: retail-dev
+  namespace: kafka-demo
 spec:
   replicas: 3
   image:
@@ -27,13 +27,13 @@ spec:
     enabled: true
   dependencies:
     zookeeper:
-      endpoint: zookeeper.retail-dev.svc.cluster.local:2181
+      endpoint: zookeeper.kafka-demo.svc.cluster.local:2181
 ---
 apiVersion: platform.confluent.io/v1beta1
 kind: Connect
 metadata:
   name: connect
-  namespace: retail-dev
+  namespace: kafka-demo
 spec:
   replicas: 1
   image:
@@ -47,7 +47,7 @@ apiVersion: platform.confluent.io/v1beta1
 kind: KsqlDB
 metadata:
   name: ksqldb
-  namespace: retail-dev
+  namespace: kafka-demo
 spec:
   replicas: 1
   image:
@@ -59,7 +59,7 @@ apiVersion: platform.confluent.io/v1beta1
 kind: ControlCenter
 metadata:
   name: controlcenter
-  namespace: retail-dev
+  namespace: kafka-demo
 spec:
   replicas: 1
   image:
@@ -68,19 +68,19 @@ spec:
   dataVolumeCapacity: 10Gi
   dependencies:
     schemaRegistry:
-      url: http://schemaregistry.retail-dev.svc.cluster.local:8081
+      url: http://schemaregistry.kafka-demo.svc.cluster.local:8081
     ksqldb:
     - name: ksqldb
-      url: http://ksqldb.retail-dev.svc.cluster.local:8088
+      url: http://ksqldb.kafka-demo.svc.cluster.local:8088
     connect:
     - name: connect
-      url: http://connect.retail-dev.svc.cluster.local:8083
+      url: http://connect.kafka-demo.svc.cluster.local:8083
 ---
 apiVersion: platform.confluent.io/v1beta1
 kind: SchemaRegistry
 metadata:
   name: schemaregistry
-  namespace: retail-dev
+  namespace: kafka-demo
 spec:
   replicas: 3
   image:
@@ -91,7 +91,7 @@ apiVersion: platform.confluent.io/v1beta1
 kind: KafkaRestProxy
 metadata:
   name: kafkarestproxy
-  namespace: retail-dev
+  namespace: kafka-demo
 spec:
   replicas: 1
   image:
@@ -99,4 +99,4 @@ spec:
     init: confluentinc/confluent-init-container:2.8.0
   dependencies:
     schemaRegistry:
-      url: http://schemaregistry.retail-dev.svc.cluster.local:8081
+      url: http://schemaregistry.kafka-demo.svc.cluster.local:8081
